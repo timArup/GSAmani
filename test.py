@@ -5,20 +5,13 @@ from gsapy import GSA
 from matplotlib import pyplot as plt
 # from pathlib import Path
 
-# model = GSA(r'C:\Users\Tim.Stuart\Arup\285151-00 NWF (Wear Footbridge) - Project Documents\04 DELIVERABLES\4-04 Calcs\Substructure\North Pier\script test\NP model_02.gwb')
-# model = GSA(".\\NPmodel_02.gwb")
-
 def create_list(prefix,first,last):
     list = []
     for i in range(first,last+1):
         list.append(prefix + str(i))
     return list
 
-# def create
-
-
 def user_params():
-
     global Cs_ULS
     global Cs_ULS_C
     global Cs_SLS
@@ -70,7 +63,7 @@ def get_multiple_beam_results(elements):
 
     Fx = []
     Mres = []
-    Cs
+    Cs = []
     for combination in Cs_ULS:
         for element_no in elements:
             results = beam_results(element_no,combination)
@@ -94,14 +87,10 @@ def get_multiple_beam_results(elements):
             Mres.append((results[1][4]**2+results[1][5]**2)**0.5)
             Cs.append(combination)
 
-    return Fx, Mres,Cs
+    return Fx, Mres, Cs
 
 def results_analysis(df):
-#     print(df['Res_0'])
-#     print(df['Res_0']["Fx"])
     df['WC_0'] = {'Fx': df['Res_0']['Fx'] ,'Mres': sqrt( df['Res_0']['Myy']**2 + df['Res_0']['Mzz']**2 )}
-
-
 
 
 if __name__ == '__main__':
@@ -135,30 +124,19 @@ if __name__ == '__main__':
 
     # results['0Mres'] = (results['0Myy']**2+results['0Mzz']**2)
     # results['1Mres'] = (results['1Myy']**2+results['1Mzz']**2)
-
+    # print(Cs)
     plt.scatter(Mres,Fx)
+
+    for i in range(len(Mres)-1):
+        M = Mres[i]
+        F = Fx[i]
+        C = Cs[i] 
+        plt.text(x=M, y=F, s=C)
     plt.show()
-    print(Fx)
-    print(Mres)
-
-    # print(results)
-
-
-    # print(results[113])
-    # results['Res_0']
-    # 
-    # print(R0)
-    # print(R1)
+    # print(Fx)
+    # print(Mres)
 
     # results = pd.DataFrame.from_dict({'Res_0':R0,'Res_1':R1}, index=elements)
-    # print(results)
     # results_analysis(results)
-    # print(results)
 
-    # elements = str(piles_under_pilecap)
-    # print(elements[2])
-
-
-    # print(model.get_elements())
     del model
-    # model.get_all_saved_lists
