@@ -1,0 +1,7 @@
+{'index': 64, 'name': '', 'colour': 'NO_RGB', 'coords': [-3.080488111, -1.39153665, -1.0], 
+'restraint': None, 'axis': 0, 'mesh_size': None, 'spring_property': None, 'mass_property': None, 
+'damper_property': None, 'sID': None}
+
+{'index': 277, 'name': '', 'colour': 'NO_RGB', 'type': 'BEAM', 'prop': 3, 'group': 1, 
+'topo': [123, 349], 'orient_node': 0, 'orient_angle': 0.0, 'releases': None, 
+'offsets': [0.0, 0.0, 0.0, 0.0], 'dummy': False, 'parent_member': None, 'sID': None}
