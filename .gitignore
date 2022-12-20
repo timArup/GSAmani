@@ -1,3 +1,13 @@
+
+./arupcomputepy-master-35f0dbf52301380d04a1d80a16421bef1f6b368f
+models
+shear_design
+graphs
+salient
+ss_venv
+venv
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
