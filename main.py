@@ -1,7 +1,4 @@
-from telnetlib import PRAGMA_HEARTBEAT
-from turtle import xcor
-import xdrlib
-import numpy
+import numpy as np 
 import pandas as pd
 from gsapy import GSA
 from gsapy.modules import Element
@@ -9,33 +6,91 @@ from gsapy.modules import Node
 from matplotlib import pyplot as plt
 import datetime
 from pathlib import Path
+from pprint import pprint
+
+def create_list(prefix, first, last):
+    list = []
+    for i in range(first, last+1):
+        if i < 10:
+            list.append(prefix + str(0) + str(i))
+        else:
+            list.append(prefix + str(i))
+    return list
 
 
 def userParams():
     #For SP temp
     userParams={}
     userParams["Cs"] = [
-        "C09","C10","C11","C12","C13","C14"] # ULS B
+    # create_list('C', 65, 88)   #SLS
+    # create_list('C', 1, 10) + create_list('C', 20, 27) + create_list('C', 34, 41) + create_list('C', 49, 55)   #SLS
+    # create_list('C', 11, 16) + create_list('C', 28, 33) + create_list('C', 42, 47) + create_list('C', 56, 61)   #ULS B
+    # create_list('C', 65, 88)   #ULS C
+    # create_list('C', 11, 16) + create_list('C', 25, 30) + create_list('C', 39, 44) + create_list('C', 53, 58) + \
+    #         create_list('C', 67, 72) + create_list('C', 81, 86) + \
+    #         create_list('C', 95, 100) + create_list('C', 109, 114)
+    # create_list('C', 1, 92)
+            # create_list('C', 12, 17) + create_list('C', 33, 38) + create_list('C', 54, 59) + create_list('C', 75, 80) + \
+        # "C09","C10","C11","C12","C13","C14", # ULS B
+        # "C15","C16","C17","C18","C19","C20", # ULS C
+        # "C01","C02","C03","C04","C05","C06"] # SLS
+        # "C09","C10","C11","C12","C13","C14"] # ULS B
         # "C15","C16","C17","C18","C19","C20"] # ULS C
         # "C01","C02","C03","C04","C05","C06"] # SLS
+        # "C07","C08"] # SLS QP
+
+
+        # NP
+        "C9","C10","C26","C27","C40","C41","C54","C55"] # SLSQP
+
     # userParams["modelPrefix"] = " model_03_-"
     userParams["addl_pts"] = 0
+    # userParams["selLists"] = ["top pile elem under pilecap"] ### Only temporary and set up better
     userParams["selLists"] = ["piles under pilecap"] ### Only temporary and set up better
-    userParams["heightFilter"] =  { #None, greater than, less than, between, val_1, val_2, . Only specify val_1 for > or <, specify both for between. None is no filter
+    # userParams["selLists"] = ["piles under pilecap_NR"] ### Only temporary and set up better
+    userParams["heightFilter"] =  { #None, greater than, less than, between, val_1, val_2, . Only specify val_1 for > or <, specify both for between. None is no filter. Works off midpoint of elements.
     "type":None} 
     # "type":"between","val_1":-3, "val_2": -4} 
-    # "type":"less than","val_1":-11} 
+    # "type":"less than","val_1":-9.8}   
     # "type":None} 
+    # userParams["modelsList"]=[
+    #     "./models/NAmodel_06.gwb"
+    # ]
     userParams["modelsList"]=[
-    "./models/SP model_03_+Fy_+Fz.gwb",
-    "./models/SP model_03_+Fy_-Fz.gwb",
-    "./models/SP model_03_-Fy_+Fz.gwb",
-    "./models/SP model_03_-Fy_-Fz.gwb",
-    "./models/SP model_03_no-wall_+Fy_-Fz.gwb",
-    "./models/SP model_03_no-wall_-Fy_-Fz.gwb"
-    ]		
-    userParams["loc"] = "SP"
-    userParams["strNMCurve"] = "SP_double"
+    # "./models/SP model_15_+Fy_+Fz_LB.gwb",
+    # "./models/SP model_15_+Fy_-Fz_LB.gwb",
+    # "./models/SP model_15_-Fy_+Fz_LB.gwb",
+    # "./models/SP model_15_-Fy_-Fz_LB.gwb",
+    # "./models/SP model_15_+Fy_+Fz_UB.gwb",
+    # "./models/SP model_15_+Fy_-Fz_UB.gwb",
+    # "./models/SP model_15_-Fy_+Fz_UB.gwb",
+    # "./models/SP model_15_-Fy_-Fz_UB.gwb"
+    # "./models/SP model_03_no-wall_+Fy_-Fz.gwb",
+    # "./models/SP model_03_no-wall_-Fy_-Fz.gwb"
+    # "./models/SA model_04.gwb"
+    "./models/NP model_04d_comp-springs_+3m_1.25x.gwb",
+    "./models/NP model_04d_comp-springs-1.25x.gwb", 
+    "./models/NP model_04d_deflection.gwb", 
+    "./models/NP model_04d_translate.gwb", 
+    "./models/NP model_04g 20 v spring.gwb", 
+    "./models/NP model_04h 10 v spring.gwb", 
+    "./models/NP model_04i tuned.gwb", 
+    "./models/NP model_04d.gwb", 
+    "./models/NP model_04d_comp-springs.gwb", 
+    "./models/NP model_04d_comp-springs_+3m.gwb"
+    ]
+    # # userParams["modelsList"]=[
+    # "./models/SP model_05_+Fy_+Fz.gwb",
+    # "./models/SP model_05_+Fy_-Fz.gwb",
+    # "./models/SP model_05_-Fy_+Fz.gwb",
+    # "./models/SP model_05_-Fy_-Fz.gwb",
+    # "./models/SP model_05_no-wall_+Fy_-Fz.gwb",
+    # "./models/SP model_05_no-wall_-Fy_-Fz.gwb",
+    # "./models/SP model_05a_no-wall_-Fy_-Fz.gwb"
+    # ]
+    userParams["loc"] = "NP"
+    userParams["strNMCurve"] = "SP_NR_top_10B16_16"
+    userParams["annotate"] = True # True or False
     return userParams
 
 
@@ -274,8 +329,9 @@ class CombinedModels():
     # self.NMplot
 
 def settings(ax,xStr,yStr):
-    plt.ylabel(yStr + ' (kNm)')
-    plt.xlabel(xStr + ' (kN)')
+    plt.ylabel(yStr + ' (kN)')
+    plt.xlabel(xStr + ' (kNm)')
+    ax.set_xlim(left=-500,right=None)
     # plt.xlim(0, t.max()*1.1)
     # plt.ylim(0, network[column_string].max()*1.1)
     plt.grid(which='both')
@@ -284,6 +340,11 @@ def settings(ax,xStr,yStr):
     ax.tick_params(axis="x", direction="in")
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
+    props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+
+    modelsStr = "\n".join([str(x[9:-4]) for x in userParams["modelsList"]])
+    ax.text(0.05, 0.95, modelsStr, transform=ax.transAxes, fontsize=6,
+        verticalalignment='top', bbox=props)
     # ax.spines['left'].set_visible(False)
     # ax.spines['bottom'].set_visible(False)
 
@@ -298,30 +359,33 @@ def filterPlotResult(xStr,yStr,plotResults,userParams):
     print(f"min {yStr}=: {str(min_y)}")
     xPercentAlong = pd.Series((1-x/min_x)/(1-max_x/min_x))
     yPercentAlong = pd.Series((1-y/min_y)/(1-max_y/min_y))
-    filter = (((xPercentAlong < 0.005) | (xPercentAlong > 0.90)) | (
-        (yPercentAlong < 0.01) | (yPercentAlong > 0.99))) & (x.abs() > 200) & (y.abs() > 50)
+    filter = (((xPercentAlong < 0.01) | (xPercentAlong > 0.97)) | (
+        (yPercentAlong < 0.04) | (yPercentAlong > 0.96))) & (y.abs() > 50) #& (x.abs() > 100) 
     plotResults = pd.DataFrame(plotResults)
     toAnnotate = plotResults[filter].copy()
     x = x[filter]
     y = y[filter]
     for x, y, m, C, e in zip(x, y, toAnnotate["modelName"],toAnnotate["combCase"], toAnnotate["elementIndex"]):
         c = C + "," + str(e) + ",", m
-        plt.text(x, y, c)
-    toAnnotate.to_csv(r'.\\salient\\salient_'+userParams["loc"]+'_'+yStr+'_'+ str(userParams["selLists"]) + '.csv')
+        plt.text(x, y, c, fontsize=8)
+    toAnnotate.to_csv(r'.\\salient\\salient_'+userParams["loc"]+'_'+xStr+yStr+'_'+ str(userParams["selLists"]) + '.csv')
 
 def plotting(xStr,yStr,plotResults,userParams,NMcurve=False):
     fig, ax = plt.subplots()
-    settings(ax,xStr,yStr)
     plt.scatter(plotResults[xStr],plotResults[yStr])
     try:
         NMcurve.empty
         plt.plot(NMcurve["Moment (kNm)"], NMcurve["Fx (kN)"], color="red")
+        # NMCurve2 = loadNMCurve("SP_double_12")
+        # plt.plot(NMCurve2["Moment (kNm)"], NMCurve2["Fx (kN)"], color="green")
     except:
         pass
+    settings(ax,xStr,yStr)
     plt.title(str(userParams["strNMCurve"]) + ", " + str(userParams["selLists"]) + "," + str(datetime.datetime.now()))
     # plt.text(0, 1, userParams["heightFilter"].items(), fontsize=12)
-    filterPlotResult(xStr,yStr,plotResults,userParams)
-    plt.savefig(".\\graphs\\shear\\" + str(userParams["strNMCurve"]) + str(userParams["selLists"]) + ".jpg")
+    if userParams["annotate"]:
+        filterPlotResult(xStr,yStr,plotResults,userParams)
+    # plt.savefig(".\\graphs\\shear\\" + str(userParams["strNMCurve"]) + str(userParams["selLists"]) + ".jpg")
 
 def loadNMCurve(loc):
     NMcurve = pd.read_excel(r'.\\NMcurve\\'+loc+'.xlsx', skiprows=1)
@@ -333,10 +397,84 @@ if __name__ == '__main__':
 
     combinedModels = CombinedModels(userParams)
     combinedModels.getCombResults(userParams)
+    # plotResults = combinedModels.listElementsToPlot()
+    # pprint(vars(combinedModels))
+    # plotting("Mres","Fx",plotResults,userParams)
+    # plt.show()
+
+    # df = pd.DataFrame({
+    #     "element index":[], 
+    #     "maxFx":[],"minFx":[],"maxMyy":[],"minMyy":[],
+    #     "maxMres":[],"minMres":[],"maxFres":[],"minFres":[]
+    #     })
+
+    # for element in combinedModels.combResults:
+    #     index_list = df.index[df["element index"]==element.index].tolist()
+    #     if not index_list: # if its empty its not there
+    #         maxFx = element.results[0].Fx
+    #         minFx = element.results[0].Fx
+    #         maxMyy = element.results[0].Myy
+    #         minMyy = element.results[0].Myy
+    #         maxMres = element.results[0].Mres
+    #         minMres = element.results[0].Mres
+    #         maxFres = element.results[0].Fres
+    #         minFres = element.results[0].Fres
+    #     else:
+    #         maxFx = df.iloc[index_list[0]]["maxFx"]
+    #         minFx = df.iloc[index_list[0]]["minFx"]
+    #         maxMyy = df.iloc[index_list[0]]["maxMyy"]
+    #         minMyy = df.iloc[index_list[0]]["minMyy"]
+    #         maxMres = df.iloc[index_list[0]]["maxMres"]
+    #         minMres = df.iloc[index_list[0]]["minMres"]
+    #         maxFres = df.iloc[index_list[0]]["maxFres"]
+    #         minFres = df.iloc[index_list[0]]["minFres"]
+    #     for result in element.results:
+    #         if result.Fx > maxFx:
+    #             maxFx = result.Fx
+    #         if result.Fx < minFx:
+    #             minFx = result.Fx
+    #         if result.Myy > maxMyy:
+    #             maxMyy = result.Myy
+    #         if result.Myy < minMyy:
+    #             minMyy = result.Myy
+    #         if result.Mres > maxMres:
+    #             maxMres = result.Mres
+    #         if result.Mres < minMres:
+    #             minMres = result.Mres
+    #         if result.Fres > maxFres:
+    #             maxFres = result.Fres
+    #         if result.Fres < minFres:
+    #             minFres = result.Fres
+
+    #     if not index_list:
+    #         df = pd.concat([df,pd.DataFrame({
+    #             "element index":[element.index], 
+    #             "maxFx":[maxFx],"minFx":[minFx],"maxMyy":[maxMyy],"minMyy":[minMyy],
+    #             "maxMres":[maxMres],"minMres":[minMres],"maxFres":[maxFres],"minFres":[minFres]
+    #             })])
+    #         df = df.reset_index(drop=True)
+    #     else:
+    #         df.at[index_list[0],"maxFx"] = maxFx
+    #         df.at[index_list[0],"minFx"] = minFx
+    #         df.at[index_list[0],"maxMyy"] = maxMyy
+    #         df.at[index_list[0],"minMyy"] = minMyy
+    #         df.at[index_list[0],"maxMres"] = maxMres
+    #         df.at[index_list[0],"minMres"] = minMres
+    #         df.at[index_list[0],"maxFres"] = maxFres
+    #         df.at[index_list[0],"minFres"] = minFres
+
+    # print(df)
+    # df.to_csv(r'.\\pilecap\\SLSQP_'+userParams["loc"] + '_' + str(userParams["selLists"]) + '.csv')
+
+    #     # print(f"{element.index}: {max(Fx)}")
 
     plotResults = combinedModels.listElementsToPlot()
-    plotting("Mres","Fres",plotResults,userParams)
-    plotting("Mres","Fx",plotResults,userParams,loadNMCurve(userParams["strNMCurve"]))
+    # plotResults = pd.DataFrame(plotResults)
+    # plotResults.to_csv("results_NP_ULSC.csv",index=False)
+    # pprint(plotResults)
+    # plotting("Mres","Fres",plotResults,userParams)
+    # plotting("Mres","Fx",plotResults,userParams,loadNMCurve(userParams["strNMCurve"]))
+    plotting("Mres","Fx",plotResults,userParams)
     plt.show()
 
     combinedModels.close()
@@ -355,11 +493,6 @@ if __name__ == '__main__':
 #     self.name
 
 #     self.type   # ULSB, ULSC, SLS or SLSQP
-
-
-
-
-
 
 
 
