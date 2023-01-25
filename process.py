@@ -1,7 +1,8 @@
 import pandas as pd
 from pprint import pprint
+from pathlib import Path
 
-df = pd.read_csv("results_NP_ULSC.csv")
+df = pd.read_csv(Path("results/results_NA_ULSC.csv"))
 # pprint(plotResults)
 
 # combCaseLists =   [[     "C09","C10","C11","C12","C13","C14"], # ULS B

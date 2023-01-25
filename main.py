@@ -21,7 +21,7 @@ def create_list(prefix, first, last):
 def userParams():
     #For SP temp
     userParams={}
-    userParams["Cs"] = [
+    userParams["Cs"] = [#create_list('C', 18, 23) + create_list('C', 39, 44) + create_list('C', 60, 65) + create_list('C', 81, 86)   #ULS C
     # create_list('C', 65, 88)   #SLS
     # create_list('C', 1, 10) + create_list('C', 20, 27) + create_list('C', 34, 41) + create_list('C', 49, 55)   #SLS
     # create_list('C', 11, 16) + create_list('C', 28, 33) + create_list('C', 42, 47) + create_list('C', 56, 61)   #ULS B
@@ -31,23 +31,27 @@ def userParams():
     #         create_list('C', 95, 100) + create_list('C', 109, 114)
     # create_list('C', 1, 92)
             # create_list('C', 12, 17) + create_list('C', 33, 38) + create_list('C', 54, 59) + create_list('C', 75, 80) + \
-        # "C09","C10","C11","C12","C13","C14", # ULS B
-        # "C15","C16","C17","C18","C19","C20", # ULS C
-        # "C01","C02","C03","C04","C05","C06"] # SLS
         # "C09","C10","C11","C12","C13","C14"] # ULS B
         # "C15","C16","C17","C18","C19","C20"] # ULS C
         # "C01","C02","C03","C04","C05","C06"] # SLS
-        # "C07","C08"] # SLS QP
+        "C07","C08"] # SLS QP
+
+        # NA
+        # create_list('C', 4, 9) + create_list('C', 25, 30) + create_list('C', 46, 51) + create_list('C', 67, 72)   #SLS
+        # create_list('C', 12, 17) + create_list('C', 33, 38) + create_list('C', 54, 59) + create_list('C', 75, 80)   #ULS B
+        # create_list('C', 18, 23) + create_list('C', 39, 44) + create_list('C', 60, 65) + create_list('C', 81, 86)   #ULS C
 
 
         # NP
-        "C9","C10","C26","C27","C40","C41","C54","C55"] # SLSQP
+        # "C9","C10","C26","C27","C40","C41","C54","C55"] # SLSQP
+    
+    # print(userParams["Cs"])
 
     # userParams["modelPrefix"] = " model_03_-"
     userParams["addl_pts"] = 0
     # userParams["selLists"] = ["top pile elem under pilecap"] ### Only temporary and set up better
-    userParams["selLists"] = ["piles under pilecap"] ### Only temporary and set up better
-    # userParams["selLists"] = ["piles under pilecap_NR"] ### Only temporary and set up better
+    # userParams["selLists"] = ["top pile elem"] ### Only temporary and set up better
+    userParams["selLists"] = ["piles under pilecap_AR"] ### Only temporary and set up better
     userParams["heightFilter"] =  { #None, greater than, less than, between, val_1, val_2, . Only specify val_1 for > or <, specify both for between. None is no filter. Works off midpoint of elements.
     "type":None} 
     # "type":"between","val_1":-3, "val_2": -4} 
@@ -57,27 +61,28 @@ def userParams():
     #     "./models/NAmodel_06.gwb"
     # ]
     userParams["modelsList"]=[
-    # "./models/SP model_15_+Fy_+Fz_LB.gwb",
-    # "./models/SP model_15_+Fy_-Fz_LB.gwb",
-    # "./models/SP model_15_-Fy_+Fz_LB.gwb",
-    # "./models/SP model_15_-Fy_-Fz_LB.gwb",
-    # "./models/SP model_15_+Fy_+Fz_UB.gwb",
-    # "./models/SP model_15_+Fy_-Fz_UB.gwb",
-    # "./models/SP model_15_-Fy_+Fz_UB.gwb",
-    # "./models/SP model_15_-Fy_-Fz_UB.gwb"
+    "./models/SP model_15_+Fy_+Fz_LB.gwb",
+    "./models/SP model_15_+Fy_-Fz_LB.gwb",
+    "./models/SP model_15_-Fy_+Fz_LB.gwb",
+    "./models/SP model_15_-Fy_-Fz_LB.gwb",
+    "./models/SP model_15_+Fy_+Fz_UB.gwb",
+    "./models/SP model_15_+Fy_-Fz_UB.gwb",
+    "./models/SP model_15_-Fy_+Fz_UB.gwb",
+    "./models/SP model_15_-Fy_-Fz_UB.gwb"
     # "./models/SP model_03_no-wall_+Fy_-Fz.gwb",
     # "./models/SP model_03_no-wall_-Fy_-Fz.gwb"
     # "./models/SA model_04.gwb"
-    "./models/NP model_04d_comp-springs_+3m_1.25x.gwb",
-    "./models/NP model_04d_comp-springs-1.25x.gwb", 
-    "./models/NP model_04d_deflection.gwb", 
-    "./models/NP model_04d_translate.gwb", 
-    "./models/NP model_04g 20 v spring.gwb", 
-    "./models/NP model_04h 10 v spring.gwb", 
-    "./models/NP model_04i tuned.gwb", 
-    "./models/NP model_04d.gwb", 
-    "./models/NP model_04d_comp-springs.gwb", 
-    "./models/NP model_04d_comp-springs_+3m.gwb"
+    # "./models/NP model_04d_comp-springs_+3m_1.25x.gwb",
+    # "./models/NP model_04d_comp-springs-1.25x.gwb", 
+    # "./models/NP model_04d_deflection.gwb", 
+    # "./models/NP model_04d_translate.gwb", 
+    # "./models/NP model_04g 20 v spring.gwb", 
+    # "./models/NP model_04h 10 v spring.gwb", 
+    # "./models/NP model_04i tuned.gwb", 
+    # "./models/NP model_04d.gwb", 
+    # "./models/NP model_04d_comp-springs.gwb", 
+    # "./models/NP model_04d_comp-springs_+3m.gwb"
+    # "./models/NAmodel_06.gwb"
     ]
     # # userParams["modelsList"]=[
     # "./models/SP model_05_+Fy_+Fz.gwb",
@@ -89,7 +94,8 @@ def userParams():
     # "./models/SP model_05a_no-wall_-Fy_-Fz.gwb"
     # ]
     userParams["loc"] = "NP"
-    userParams["strNMCurve"] = "SP_NR_top_10B16_16"
+    # userParams["strNMCurve"] = r'SP_NR_top_12B40_16_retrospectively'
+    userParams["strNMCurve"] = r'SP_AR_top_12(2)B40_16_retrospectively'
     userParams["annotate"] = True # True or False
     return userParams
 
@@ -469,10 +475,10 @@ if __name__ == '__main__':
     #     # print(f"{element.index}: {max(Fx)}")
 
     plotResults = combinedModels.listElementsToPlot()
-    # plotResults = pd.DataFrame(plotResults)
-    # plotResults.to_csv("results_NP_ULSC.csv",index=False)
+    plotResults = pd.DataFrame(plotResults)
+    # plotResults.to_csv(Path("results/results_NA_ULSC.csv"),index=False)
     # pprint(plotResults)
-    # plotting("Mres","Fres",plotResults,userParams)
+    plotting("Mres","Fres",plotResults,userParams)
     # plotting("Mres","Fx",plotResults,userParams,loadNMCurve(userParams["strNMCurve"]))
     plotting("Mres","Fx",plotResults,userParams)
     plt.show()
