@@ -256,3 +256,31 @@ class CombinedModels():
     def close(self):
         for model in self.models:
             del model.model
+
+
+def extract1x1(userParams):
+    resElements = []
+    plotResults = {"Fx":[],"Mres":[],"Fres":[],"elementIndex":[],"modelName":[],"combCase":[],"midpointHeight":[]}
+
+    for modelStr in userParams["modelsList"]:
+        model = Model(Path(modelStr))
+        st.write("Beginning to extract results from: " + str(modelStr))
+        model.setCombinationCases(userParams)
+        model.setElementMidpointHeight()
+        model.setResElements(userParams)
+        model.getSelectedResults(userParams)
+        resElements.extend(model.resElements)
+        del model
+        st.write("Model closed.")
+
+    for element in resElements:
+        for result in element.results:
+            plotResults["elementIndex"].append(element.index)
+            plotResults["modelName"].append(element.modelName)
+            plotResults["Fx"].append(result.Fx)
+            plotResults["Mres"].append(result.Mres)
+            plotResults["Fres"].append(result.Fres)
+            plotResults["combCase"].append(result.combCase)
+            plotResults["midpointHeight"].append(element.midpointHeight)
+
+    return plotResults

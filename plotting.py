@@ -58,7 +58,8 @@ def plot(xStr,yStr,plotResults,userParams,NMcurve=False):
         pass
     fig.update_layout(
         width=1000,
-        height=1000
+        height=1000,
+        yaxis = dict(showgrid=True,zeroline=True)
     )
     # settings(ax,xStr,yStr,userParams)
     # plt.title(str(userParams["strNMCurve"]) + ", " + str(userParams["selLists"]) + "," + str(datetime.datetime.now()))
