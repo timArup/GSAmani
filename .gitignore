@@ -3,10 +3,10 @@ graphs
 salient
 ss_venv
 venv
-ss
-models/*
-!models/ss
-models/ss/*
+# ss
+# /models/
+# !/models/ss
+# models/ss/*
 temp
 
 # Byte-compiled / optimized / DLL files
