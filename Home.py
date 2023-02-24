@@ -28,6 +28,13 @@ with sidebarPlaceholder.container():
     st.write("Settings:")
     st.radio("Run Type",["Full Extraction","Load data"])
 
+extractionArea = st.empty()
+plotArea = st.empty()
+
+# with plotArea.container():
+    
+
+
 
 
 ### Parameters intialisation
@@ -69,7 +76,7 @@ if st.button("Plot"):
 # else:
 #     plotted=False
 
-st.json(userParams)
+st.write(userParams["modelsList"])
 
 #### CHANGE FORMAT LATER
 

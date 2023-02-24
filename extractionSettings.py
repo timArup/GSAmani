@@ -16,20 +16,30 @@ def settings():
     # "./models/NP model_04d_comp-springs_+3m_1.25x.gwb"
     # "./models/NP model_04g 20 v spring.gwb"
     # "./models/NAmodel_08_test_Nslope.gwb",
-    "./models/NAmodel_08_VSExcavation.gwb",
-    "./models/NAmodel_08_0.5springs_VSExcavation.gwb",
-    "./models/NAmodel_08_0.5weaksprings_VSExcavation.gwb",
-    "./models/NAmodel_08_2springs_VSExcavation.gwb"
+    # "./models/NAmodel_08_VSExcavation.gwb",
+    # "./models/NAmodel_08_0.5springs_VSExcavation.gwb",
+    # "./models/NAmodel_08_0.5weaksprings_VSExcavation.gwb",
+    # "./models/NAmodel_08_2springs_VSExcavation.gwb"
+    "./models/NAmodel_08_EastGL 25.5_additionalPiles.gwb",
+    "./models/NAmodel_08_0.5springs_EastGL 25.5_additionalPiles.gwb",
+    "./models/NAmodel_08_0.5weaksprings_EastGL 25.5_additionalPiles.gwb",
+    "./models/NAmodel_08_2springs_EastGL 25.5_additionalPiles.gwb"
+    # "./models/NAmodel_08_EastGL 23.5 EPS.gwb",
+    # "./models/NAmodel_08_0.5springs_EastGL 23.5 EPS.gwb",
+    # "./models/NAmodel_08_0.5weaksprings_EastGL 23.5 EPS.gwb",
+    # "./models/NAmodel_08_2springs_EastGL 23.5 EPS.gwb"
+    # "./models/test.gwb"
     ]
     userParams["loc"] = "NP"
     userParams["strNMCurve"] = "SP_NR_top_10B16_16"
     userParams["annotate"] = True # True or False
     userParams["combCaseToExtract"] = "all" #"all" if run for all, list if run for some
-    userParams["cCaseAttempts"] = ["C"+str(x) for x in range(1,150)]
-    # userParams["cCaseAttempts"] = ["C12","C13","C14","C15","C16","C17",
-    #                         "C33","C34","C35","C36","C37","C38",
-    #                         "C54","C55","C56","C57","C58","C59",
-    #                         "C75","C76","C77","C78","C79","C80"]
+    # userParams["cCaseAttempts"] = ["C"+str(x) for x in range(1,150)]
+    # userParams["cCaseAttempts"] = ["C3min"]
+    userParams["cCaseAttempts"] = ["C12","C13","C14","C15","C16","C17",
+                            "C33","C34","C35","C36","C37","C38",
+                            "C54","C55","C56","C57","C58","C59",
+                            "C75","C76","C77","C78","C79","C80"]
 
 
     return userParams

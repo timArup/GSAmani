@@ -184,6 +184,7 @@ class ExtElement(Element):
                 for result in results:
                     self.results.append(Result(result,self,combCase))
             except:
+                print("Not working"+combCase)
                 userParams["cCaseAttempts"].remove(combCase)
 
     def setMightpointHeight(self,model):
@@ -263,7 +264,9 @@ def extract1x1(userParams):
     plotResults = {"Fx":[],"Mres":[],"Fres":[],"elementIndex":[],"modelName":[],"combCase":[],"midpointHeight":[]}
 
     for modelStr in userParams["modelsList"]:
+        # GSA.export_to_csv(Path(modelStr))
         model = Model(Path(modelStr))
+        # model.model.export_to_csv(Path("./helper"))
         st.write("Beginning to extract results from: " + str(modelStr))
         model.setCombinationCases(userParams)
         model.setElementMidpointHeight()
