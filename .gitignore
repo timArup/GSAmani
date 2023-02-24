@@ -4,7 +4,9 @@ salient
 ss_venv
 venv
 ss
-models/ss
+models/*
+!models/ss
+models/ss/*
 temp
 
 # Byte-compiled / optimized / DLL files
