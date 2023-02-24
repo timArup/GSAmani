@@ -59,4 +59,4 @@ urllib3==1.26.13
 validators==0.20.0
 watchdog==2.2.0
 zipp==3.11.0
-git+https://gitlab.arup.com/david.dekoning/gsapy/repository/archive.zip?ref=stable#egg=gsapy
+git+https://github.arup.com/david.dekoning/gsapy/repository/archive.zip?ref=stable#egg=gsapy
