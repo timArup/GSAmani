@@ -1,47 +1,42 @@
-# """
-# How to run:
-# streamlit run main.py
-# """
-
 import streamlit as st
-import extraction
+import utils.extraction as extraction
 import numpy as np 
 import pandas as pd
 # from gsapy import GSA
 from gsapy.modules import Element
 from gsapy.modules import Node
 from matplotlib import pyplot as plt
-# import datetime
 from pathlib import Path
-# import pythoncom
 import plotly.express as px
-import plotting
-import extractionSettings
+import utils.plotting as plotting
+import utils.extractionSettings as extractionSettings
 import plotly.graph_objects as go
+from utils.flags import Flags
 
 # st.set_page_config(layout="wide")
-
-with st.sidebar:
-    sidebarPlaceholder = st.empty()
-
-with sidebarPlaceholder.container():
-    st.write("Settings:")
-    st.radio("Run Type",["Full Extraction","Load data"])
-
-extractionArea = st.empty()
-plotArea = st.empty()
-
-# with plotArea.container():
-    
-
-
-
 
 ### Parameters intialisation
 if "plotResults" not in st.session_state:
     st.session_state.plotResults = False
 if "plotted" not in st.session_state:
     st.session_state.plotted = False
+if "flags" not in st.session_state:
+    st.session_state.flags = Flags()
+
+
+#### Rough layout
+with st.sidebar: 
+    sidebarPlaceholder = st.empty()
+
+with sidebarPlaceholder.container():
+    st.write("Settings:")
+    st.radio("Run Type",["Full Extraction","Load data"])
+
+# with plotArea.container():
+    
+
+
+
 # Specify Settings for extraction 
 userParams = extractionSettings.settings()
 st.session_state.userParams = userParams
@@ -63,79 +58,76 @@ savedEnvelopes["NA_SLS"] = ["C18","C19","C20","C21","C22","C23",
 
 ### Functions
 
-
 ### Layout
+extractionArea = st.container()
 
 if st.button("Run Extraction"):
-    runExtraction=True
-else:
-    runExtraction = False
+    st.session_state.flags.runExtraction=True
 
-if st.button("Plot"):
-    st.session_state.plotted=True
-# else:
-#     plotted=False
+plotArea = st.container()
+if st.session_state.flags.extracted:
+    if st.button("Plot"):
+        st.session_state.plotted=True
+    # else:
+    #     plotted=False
+else:
+    st.write("Extract data to get plotting function")
 
 st.write(userParams["modelsList"])
 
 #### CHANGE FORMAT LATER
 
-if runExtraction:
-    plotResults = extraction.extract1x1(userParams)
-
-    st.session_state.plotResults = plotResults
-
-    st.write("done")
-
-
-if st.session_state.plotResults:
-    "Have run Extraction"
+if st.session_state.flags.runExtraction:
+    with extractionArea:
+        st.session_state.plotResults = extraction.extract1x1(userParams)
+        (st.session_state.flags.runExtraction,st.session_state.flags.extracted) = (False,True)
+        st.write("done")
 
 if st.session_state.plotted:
+    with plotArea:
 
-    selectedEnvelopes = st.multiselect("Select saved envelope:",savedEnvelopes.keys())
-    
-    CsToDisplay = []
-    for key in selectedEnvelopes:
-        CsToDisplay.extend([x for x in savedEnvelopes[key]])
+        selectedEnvelopes = st.multiselect("Select saved envelope:",savedEnvelopes.keys())
+        
+        CsToDisplay = []
+        for key in selectedEnvelopes:
+            CsToDisplay.extend([x for x in savedEnvelopes[key]])
 
-    plotResultsToDisplay = pd.DataFrame(st.session_state.plotResults)
-    bottomPileHeight = plotResultsToDisplay["midpointHeight"].min()
-    plotResultsToDisplay["relHeight"] = plotResultsToDisplay["midpointHeight"] - bottomPileHeight
+        plotResultsToDisplay = pd.DataFrame(st.session_state.plotResults)
+        bottomPileHeight = plotResultsToDisplay["midpointHeight"].min()
+        plotResultsToDisplay["relHeight"] = plotResultsToDisplay["midpointHeight"] - bottomPileHeight
 
 
-    NMCurves = ["SP_NR_top_8B16_16","SP_NR_top_10B16_16","NA_top","NA_bot","NA_trial","NA_top_check","NA_top_rotated"]
+        NMCurves = ["SP_NR_top_8B16_16","SP_NR_top_10B16_16","NA_top","NA_bot","NA_trial","NA_top_check","NA_top_rotated"]
 
-    NMCurveStrs = st.multiselect("Select NM Curve:",NMCurves)
-    
-    modelsToDisplay = st.multiselect("Select mdoels:",plotResultsToDisplay['modelName'].unique())
-    st.write(modelsToDisplay)
+        NMCurveStrs = st.multiselect("Select NM Curve:",NMCurves)
+        
+        modelsToDisplay = st.multiselect("Select mdoels:",plotResultsToDisplay['modelName'].unique())
+        st.write(modelsToDisplay)
 
-    (lowHeight,upHeight) = st.select_slider("Choose relative height change:",options=np.sort(plotResultsToDisplay["relHeight"].unique()),value=(float(plotResultsToDisplay["relHeight"].min()),float(plotResultsToDisplay["relHeight"].max())))
+        (lowHeight,upHeight) = st.select_slider("Choose relative height change:",options=np.sort(plotResultsToDisplay["relHeight"].unique()),value=(float(plotResultsToDisplay["relHeight"].min()),float(plotResultsToDisplay["relHeight"].max())))
 
-    plotResultsToDisplay = plotResultsToDisplay[plotResultsToDisplay['relHeight'].between(lowHeight,upHeight)]
+        plotResultsToDisplay = plotResultsToDisplay[plotResultsToDisplay['relHeight'].between(lowHeight,upHeight)]
 
-    if CsToDisplay:
-        plotResultsToDisplay = plotResultsToDisplay[plotResultsToDisplay['combCase'].isin(CsToDisplay)]
+        if CsToDisplay:
+            plotResultsToDisplay = plotResultsToDisplay[plotResultsToDisplay['combCase'].isin(CsToDisplay)]
 
-    if modelsToDisplay:
-        plotResultsToDisplay = plotResultsToDisplay[plotResultsToDisplay['modelName'].isin(modelsToDisplay)]
+        if modelsToDisplay:
+            plotResultsToDisplay = plotResultsToDisplay[plotResultsToDisplay['modelName'].isin(modelsToDisplay)]
 
-    
+        
 
-    
-    # st.write()
-    # selectedCombinations = st.multiselect("Combinations selected:",plotResults[""])
+        
+        # st.write()
+        # selectedCombinations = st.multiselect("Combinations selected:",plotResults[""])
 
-    st.write(len(plotResultsToDisplay))
-    fig = plotting.plot("Mres","Fx",plotResultsToDisplay,st.session_state.userParams)
-    # fig2 = plotting.plot("Fres","Fx",plotResultsToDisplay,st.session_state.userParams)
-    # NMcurve = plotting.loadNMCurve(NMCurveStr)
-    if NMCurveStrs:
-        for NMCurveStr in NMCurveStrs:
-            NMcurve = plotting.loadNMCurve(NMCurveStr)
-            fig.add_trace(go.Scatter(x=NMcurve["Moment (kNm)"],y=NMcurve["Fx (kN)"],mode='lines',name=NMCurveStr))
-    st.plotly_chart(fig)
-    print(plotResultsToDisplay.dtypes)
-    st.dataframe(plotResultsToDisplay,width=1000)
+        st.write(len(plotResultsToDisplay))
+        fig = plotting.plot("Mres","Fx",plotResultsToDisplay,st.session_state.userParams)
+        # fig2 = plotting.plot("Fres","Fx",plotResultsToDisplay,st.session_state.userParams)
+        # NMcurve = plotting.loadNMCurve(NMCurveStr)
+        if NMCurveStrs:
+            for NMCurveStr in NMCurveStrs:
+                NMcurve = plotting.loadNMCurve(NMCurveStr)
+                fig.add_trace(go.Scatter(x=NMcurve["Moment (kNm)"],y=NMcurve["Fx (kN)"],mode='lines',name=NMCurveStr))
+        st.plotly_chart(fig)
+        # st.dataframe(plotResultsToDisplay,width=1000)
 
