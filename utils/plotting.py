@@ -4,6 +4,7 @@ import datetime
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
+from pathlib import Path
 
 def settings(ax,xStr,yStr,userParams):
     plt.ylabel(yStr + ' (kN)')
@@ -73,5 +74,6 @@ def plot(xStr,yStr,plotResults,userParams,NMcurve=False):
     return fig
 
 def loadNMCurve(loc):
-    NMcurve = pd.read_excel(r'.\\NMcurve\\'+loc+'.xlsx', skiprows=1)
+    path = './data/NMcurves/'+loc+'.xlsx'
+    NMcurve = pd.read_excel(Path(path), skiprows=1)
     return NMcurve

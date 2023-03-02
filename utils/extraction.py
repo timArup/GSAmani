@@ -46,8 +46,8 @@ class Model():
         for element in self.elements:
             element.setMightpointHeight(self)
 
-    def setCombinationCases(self,userParams):
-        self.resCombinationCases = userParams["Cs"]
+    # def setCombinationCases(self,userParams):
+    #     self.resCombinationCases = userParams["Cs"]
 
         # if userParams["combCaseToExtract"] == "all":
         #     self.resCombinationCases = self.combCasesInModel
@@ -235,7 +235,7 @@ class CombinedModels():
         self.combResults = []
         for model in self.models:
             st.write("Beginning to extract results from: " + str(model.path))
-            model.setCombinationCases(userParams)
+            # model.setCombinationCases(userParams)
             model.setElementMidpointHeight()
             model.setResElements(userParams)
             model.getSelectedResults(userParams)
@@ -265,10 +265,11 @@ def extract1x1(userParams):
 
     for modelStr in userParams["modelsList"]:
         # GSA.export_to_csv(Path(modelStr))
-        model = Model(Path(modelStr))
+        modelStr += '.gwb'
+        model = Model(Path(".")/"data/models"/modelStr)
         # model.model.export_to_csv(Path("./helper"))
         st.write("Beginning to extract results from: " + str(modelStr))
-        model.setCombinationCases(userParams)
+        # model.setCombinationCases(userParams)
         model.setElementMidpointHeight()
         model.setResElements(userParams)
         model.getSelectedResults(userParams)
