@@ -164,7 +164,7 @@ if st.session_state.plotted:
         filesNMs = get_files_in_folder("data/NMcurves",".xlsx")
         longNamesNMs = list(filesNMs.keys())
         shortNamesNMs = [filesNMs[key][1] for key,value in filesNMs.items()]
-        NMCurveStrs = st.multiselect("Select NM Curve:",shortNamesNMs,default=["NA_top","NA_bot"])
+        NMCurveStrs = st.multiselect("Select NM Curve:",shortNamesNMs,default=["NA_top"])
             
         modelsToDisplay = st.multiselect("Select mdoels:",plotResultsToDisplay['modelName'].unique())
 
