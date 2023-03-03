@@ -79,10 +79,25 @@ def read_Settings(filename):
         st.write("can't read" + path)
     return dictionary
 
+def updateChangeExSettingsForm(exSettingName):
+    st.session_state.exSettings = read_Settings("data/exSettings/"+exSettingName+".txt")
+
 
 
 with extractionArea:
     exSet = st.session_state.exSettings ## This two way links these variables. Done for reducing text
+
+    with st.form(key="loadExSettings",clear_on_submit=False):
+        files = get_files_in_folder("data/exSettings",".txt")
+        longNamesFiles = list(files.keys())
+        shortNamesFiles = [files[key][1] for key,value in files.items()]
+        st.write(files)
+        exSettingName = st.selectbox(label="Select saved extraction settings:",options=shortNamesFiles)
+        loadExSet = st.form_submit_button(label='loadExSet',on_click=updateChangeExSettingsForm(exSettingName))
+
+    if loadExSet:
+        st.write("data/exSettings/"+exSettingName+".txt")
+        st.session_state.exSettings = read_Settings("data/exSettings/"+exSettingName+".txt")
 
     with st.form(key="changeSettings",clear_on_submit=False):
         col1,col2 = st.columns(2, gap="small")
