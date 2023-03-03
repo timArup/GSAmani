@@ -51,7 +51,8 @@ with sidebarPlaceholder.container():
 extractionArea = st.container()
 
 def extractAndSave(exSettings):
-    st.write(exSettings)
+    # st.write(exSettings)
+    st.empty()
 
 def get_files_in_folder(folderName,fileExtension):
     path = "./" + folderName
@@ -83,21 +84,20 @@ def updateChangeExSettingsForm(exSettingName):
     st.session_state.exSettings = read_Settings("data/exSettings/"+exSettingName+".txt")
 
 
-
 with extractionArea:
     exSet = st.session_state.exSettings ## This two way links these variables. Done for reducing text
 
-    with st.form(key="loadExSettings",clear_on_submit=False):
-        files = get_files_in_folder("data/exSettings",".txt")
-        longNamesFiles = list(files.keys())
-        shortNamesFiles = [files[key][1] for key,value in files.items()]
-        st.write(files)
-        exSettingName = st.selectbox(label="Select saved extraction settings:",options=shortNamesFiles)
-        loadExSet = st.form_submit_button(label='loadExSet',on_click=updateChangeExSettingsForm(exSettingName))
+    # with st.form(key="loadExSettings",clear_on_submit=False):
+    #     files = get_files_in_folder("data/exSettings",".txt")
+    #     longNamesFiles = list(files.keys())
+    #     shortNamesFiles = [files[key][1] for key,value in files.items()]
+    #     exSettingName = st.selectbox(label="Select saved extraction settings:",options=shortNamesFiles)
+    #     loadExSet = st.form_submit_button(label='loadExSet',on_click=updateChangeExSettingsForm(exSettingName))
 
-    if loadExSet:
-        st.write("data/exSettings/"+exSettingName+".txt")
-        st.session_state.exSettings = read_Settings("data/exSettings/"+exSettingName+".txt")
+    # if loadExSet:
+    #     st.session_state.exSettings = read_Settings("data/exSettings/"+exSettingName+".txt")
+
+    # st.write(st.session_state.exSettings)
 
     with st.form(key="changeSettings",clear_on_submit=False):
         col1,col2 = st.columns(2, gap="small")
@@ -116,14 +116,19 @@ with extractionArea:
                 st.number_input(label="Lower height:",min_value=0,step=1)
                 st.number_input(label="Upperheight height:",min_value=0,step=1)
             exSet["cCaseAttempts"] = eval(st.text_input(label='Choose combination cases to extract for:',value=exSet["cCaseAttempts"]))
+            # st.write(exSet["cCaseAttempts"])
             if saveExtraction:
                 exSet["saveExSettingsName"] = st.text_input(label='Save name of extraction results:',value = exSet["saveExSettingsName"])
             # saveButton = st.form_submit_button(label='Save')
+    
+    # st.write(st.session_state.exSettings)
 
 
     if extractButton:
+        st.write(st.session_state.exSettings)
         if saveExtraction:
             save_Settings(st.session_state.exSettings,"data/exSettings/"+exSet["saveExSettingsName"]+".txt")
+            st.write(st.session_state.exSettings)
         st.session_state.plotResults = extraction.extract1x1(st.session_state.exSettings)
         # (st.session_state.flags.runExtraction,st.session_state.flags.extracted) = (False,True)
         st.write("done")
@@ -148,8 +153,9 @@ if st.session_state.plotted:
         selectedEnvelopes = st.multiselect("Select saved envelope:",st.session_state.plSettings["envelopes"].keys())
         
         CsToDisplay = []
-        for key in selectedEnvelopes:
-            CsToDisplay.extend([x for x in st.session_state.plSettings["envelopes"][key]])
+        if selectedEnvelopes:
+            for key in selectedEnvelopes:
+                CsToDisplay.extend([x for x in st.session_state.plSettings["envelopes"][key]])
 
         plotResultsToDisplay = pd.DataFrame(st.session_state.plotResults).round({"midpointHeight":2})
         bottomPileHeight = plotResultsToDisplay["midpointHeight"].min()
