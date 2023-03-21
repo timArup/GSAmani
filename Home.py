@@ -83,6 +83,15 @@ def read_Settings(filename):
 def updateChangeExSettingsForm(exSettingName):
     st.session_state.exSettings = read_Settings("data/exSettings/"+exSettingName+".txt")
 
+def create_list(prefix, first, last):
+    list = []
+    for i in range(first, last+1):
+        if i < 10:
+            list.append(prefix + str(0) + str(i))
+        else:
+            list.append(prefix + str(i))
+    return list
+
 
 with extractionArea:
     exSet = st.session_state.exSettings ## This two way links these variables. Done for reducing text
@@ -99,14 +108,16 @@ with extractionArea:
 
     # st.write(st.session_state.exSettings)
 
-    with st.form(key="changeSettings",clear_on_submit=False):
+    with st.form(key="changeSettings",clear_on_submit=False): 
         col1,col2 = st.columns(2, gap="small")
         with col1:
             filesModels = get_files_in_folder("data/models",".gwb")
             longNamesModels = list(filesModels.keys())
             shortNamesModels = [filesModels[key][1] for key,value in filesModels.items()]
-            exSet["modelsList"] = st.multiselect("Select models:",shortNamesModels,default=exSet["modelsList"])
-            
+            try:
+                exSet["modelsList"] = st.multiselect("Select models:",shortNamesModels,default=exSet["modelsList"])
+            except:
+                exSet["modelsList"] = st.multiselect("Select models:",shortNamesModels)
             exSet["selLists"] = eval(st.text_input(label='Selected lists:',value=exSet["selLists"]))
             exSet["addl_pts"] = st.number_input(label="Pick additional points:",min_value=0,value=exSet["addl_pts"],step=1)
             extractButton = st.form_submit_button(label='Extract')
@@ -115,7 +126,11 @@ with extractionArea:
                 st.write("Height Filter not plugged in yet. Has become depricated due to the new graph filtering funcitonaility.")
                 st.number_input(label="Lower height:",min_value=0,step=1)
                 st.number_input(label="Upperheight height:",min_value=0,step=1)
-            exSet["cCaseAttempts"] = eval(st.text_input(label='Choose combination cases to extract for:',value=exSet["cCaseAttempts"]))
+            allCCases = st.checkbox(label="Extract all available Comb Cases")
+            if not allCCases:
+                exSet["cCaseAttempts"] = eval(st.text_input(label='Choose combination cases to extract for:',value=exSet["cCaseAttempts"]))
+            else:
+                exSet["cCaseAttempts"] = create_list("C", 1, 1000)
             # st.write(exSet["cCaseAttempts"])
             if saveExtraction:
                 exSet["saveExSettingsName"] = st.text_input(label='Save name of extraction results:',value = exSet["saveExSettingsName"])
@@ -147,7 +162,7 @@ if st.session_state.flags.extracted:
 else:
     st.write("Extract data to get plotting function")
 
-if st.session_state.plotted:
+if st.session_state.plotResults:
     with plotArea:
 
         selectedEnvelopes = st.multiselect("Select saved envelope:",st.session_state.plSettings["envelopes"].keys())
@@ -163,8 +178,11 @@ if st.session_state.plotted:
 
         filesNMs = get_files_in_folder("data/NMcurves",".xlsx")
         longNamesNMs = list(filesNMs.keys())
-        shortNamesNMs = [filesNMs[key][1] for key,value in filesNMs.items()]
-        NMCurveStrs = st.multiselect("Select NM Curve:",shortNamesNMs,default=["NA_top"])
+        shortNamesNMs = [filesNMs[key][1] for key,value in filesNMs.items()]#
+        try:
+            NMCurveStrs = st.multiselect("Select NM Curve:",shortNamesNMs,default=["NA_top"])
+        except:
+            NMCurveStrs = st.multiselect("Select NM Curve:",shortNamesNMs)
             
         modelsToDisplay = st.multiselect("Select mdoels:",plotResultsToDisplay['modelName'].unique())
 
