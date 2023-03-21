@@ -30,11 +30,11 @@ class Model():
             pythoncom.CoInitialize()
             self.model = GSA(path, version=self.version)
             st.write("Model loaded successfully: " + str(self.path)) # This doesn't seem to work. 
-            # st.write([x for x in self.model.get_analysis_case().items()])
-            # self.combCasesInModel = ["C"+ str(x[0]) for x in self.model.get_analysis_case().items()]
-            self.lists = self.model.get_all_saved_lists()
-            self.elements = [ExtElement(x[1],self) for x in self.model.get_elements().items()] # .items converst the dictionary into a list, [1] is to drop the key returned from items()
-            self.nodes = [ExtNode(x[1]) for x in self.model.get_nodes().items()]
+            # # st.write([x for x in self.model.get_analysis_case().items()])
+            # # self.combCasesInModel = ["C"+ str(x[0]) for x in self.model.get_analysis_case().items()]
+            # self.lists = self.model.get_all_saved_lists()
+            # self.elements = [ExtElement(x[1],self) for x in self.model.get_elements().items()] # .items converst the dictionary into a list, [1] is to drop the key returned from items()
+            # self.nodes = [ExtNode(x[1]) for x in self.model.get_nodes().items()]
         except:
             st.write("Failure to Load model: " + str(self.path))
         self.results = []
@@ -288,3 +288,17 @@ def extract1x1(userParams):
             plotResults["midpointHeight"].append(element.midpointHeight)
 
     return plotResults
+
+def experimentCSV():
+    modelStr = "NAmodel_08_EastGL 25.5_additionalPiles.gwb"
+    modelObj = Model(Path(".")/"data/models"/modelStr)
+    # GSA.export_to_csv(Path(modelStr))
+
+    try:
+        GSA.export_to_csv(Path("./test"))
+    except:
+        print("no bueno")
+        pass
+    modelObj.model.export_to_csv(Path("./test/"))
+
+    del modelObj
