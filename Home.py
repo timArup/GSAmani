@@ -216,5 +216,6 @@ if st.session_state.plotResults:
             st.write(unique_values)
 
         if st.session_state.flags.dataBelow:
-            st.dataframe(plotResultsToDisplay,width=1000)
+            st.dataframe(plotResultsToDisplay.style.format(thousands=""),width=1000)
+            print(plotResultsToDisplay)
 

@@ -39,11 +39,16 @@ def defaultExSettings():
     # "./models/test.gwb"
     ],
 
-    "cCaseAttempts" : create_list("C", 1, 150),
-    # "cCaseAttempts" :["C12","C13","C14","C15","C16","C17"],#,""
-                            # "C33","C34","C35","C36","C37","C38",
-                            # "C54","C55","C56","C57","C58","C59",
-                            # ["C75","C76","C77","C78","C79","C80"]
+    # "cCaseAttempts" : create_list("C", 1, 150),
+    # "cCaseAttempts" : ["C12","C13","C14","C15","C16","C17",
+    #                         "C33","C34","C35","C36","C37","C38",
+    #                         "C54","C55","C56","C57","C58","C59",
+    #                         "C75","C76","C77","C78","C79","C80"], #ULS B NA
+    "cCaseAttempts" : ["C12","C13","C14","C15","C16","C17",
+                        "C33","C34","C35","C36","C37","C38",
+                        "C54","C55","C56","C57","C58","C59",
+                        "C75","C76","C77","C78","C79","C80",
+                        "C10","C11","C31","C32","C52","C53","C73","C74"], #ULS B AND SLS QP NA
 
     "saveExSettingsName" : ""
                         
