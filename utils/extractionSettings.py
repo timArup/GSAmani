@@ -50,7 +50,7 @@ def defaultExSettings():
                         "C75","C76","C77","C78","C79","C80",
                         "C10","C11","C31","C32","C52","C53","C73","C74"], #ULS B AND SLS QP NA
 
-    "saveExSettingsName" : ""
+    "saveExSettingsName" : "Default"
                         
     
     }

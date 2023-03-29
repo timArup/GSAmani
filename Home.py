@@ -48,6 +48,8 @@ with sidebarPlaceholder.container():
 ### Functions
 
 ### Layout
+st.header("GSAmani")
+
 extractionArea = st.container()
 
 def extractAndSave(exSettings):
@@ -92,23 +94,26 @@ def create_list(prefix, first, last):
             list.append(prefix + str(i))
     return list
 
-
 with extractionArea:
-    exSet = st.session_state.exSettings ## This two way links these variables. Done for reducing text
+    exSet = st.session_state.exSettings ## This two way links these variables. Done for reducing text 
+    st.write(exSet)
 
-    # with st.form(key="loadExSettings",clear_on_submit=False):
-    #     files = get_files_in_folder("data/exSettings",".txt")
-    #     longNamesFiles = list(files.keys())
-    #     shortNamesFiles = [files[key][1] for key,value in files.items()]
-    #     exSettingName = st.selectbox(label="Select saved extraction settings:",options=shortNamesFiles)
-    #     loadExSet = st.form_submit_button(label='loadExSet',on_click=updateChangeExSettingsForm(exSettingName))
+    with st.form(key="loadExSettings",clear_on_submit=False):
+        st.subheader("Load in saved extraction settings")
+        files = get_files_in_folder("data/exSettings",".txt")
+        longNamesFiles = list(files.keys())
+        shortNamesFiles = [files[key][1] for key,value in files.items()]
+        exSettingName = st.selectbox(label="Select saved extraction settings:",options=shortNamesFiles)
+        loadExSet = st.form_submit_button(label='loadExSet',on_click=updateChangeExSettingsForm(exSettingName))
 
-    # if loadExSet:
-    #     st.session_state.exSettings = read_Settings("data/exSettings/"+exSettingName+".txt")
+    if loadExSet:
+        st.session_state.exSettings = read_Settings("data/exSettings/"+exSettingName+".txt")
 
-    # st.write(st.session_state.exSettings)
+    st.write(st.session_state.exSettings)
 
     with st.form(key="changeSettings",clear_on_submit=False): 
+        st.subheader("Settings for extraction")
+        st.text(f'Settings loaded in: {exSet["saveExSettingsName"]}') 
         col1,col2 = st.columns(2, gap="small")
         with col1:
             filesModels = get_files_in_folder("data/models",".gwb")
