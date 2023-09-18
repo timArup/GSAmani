@@ -100,6 +100,7 @@ class Model():
             self.resElements = [self.getElement(elementIndex) for elementIndex in elementNos]
 
     def getElement(self,elementIndex):
+        print(elementIndex)
         for element in self.elements:
             if element.index == elementIndex:
                 return element
@@ -184,7 +185,7 @@ class ExtElement(Element):
                 for result in results:
                     self.results.append(Result(result,self,combCase))
             except:
-                print("Not working"+combCase)
+                print("Not working: "+combCase)
                 userParams["cCaseAttempts"].remove(combCase)
 
     def setMightpointHeight(self,model):

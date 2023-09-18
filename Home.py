@@ -185,6 +185,8 @@ if st.session_state.plotResults:
             NMCurveStrs = st.multiselect("Select NM Curve:",shortNamesNMs)
             
         modelsToDisplay = st.multiselect("Select mdoels:",plotResultsToDisplay['modelName'].unique())
+        # modelsToDisplay = st.multiselect("Select mdoels:",plotResultsToDisplay['modelName'].unique())
+        print(plotResultsToDisplay)
 
         (lowHeight,upHeight) = st.select_slider("Choose relative height change:",options=np.sort(plotResultsToDisplay["relHeight"].unique()),value=(float(plotResultsToDisplay["relHeight"].min()),float(plotResultsToDisplay["relHeight"].max())))
         
