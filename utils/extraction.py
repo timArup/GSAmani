@@ -39,7 +39,6 @@ class Model():
             st.write("Failure to Load model: " + str(self.path))
         self.results = []
         self.selLists = None
-
     
 
     def setElementMidpointHeight(self):
@@ -244,12 +243,17 @@ class CombinedModels():
         return self.combResults
 
     def listElementsToPlot(self):
-        plotResults = {"Fx":[],"Mres":[],"Fres":[],"elementIndex":[],"modelName":[],"combCase":[]}
+        plotResults = {"Fx":[],"Fy":[],"Fz":[],"Mxx":[],"Myy":[],"Mzz":[],"Mres":[],"Fres":[],"elementIndex":[],"modelName":[],"combCase":[]}
         for element in self.combResults:
             for result in element.results:
                 plotResults["elementIndex"].append(element.index)
                 plotResults["modelName"].append(element.modelName)
                 plotResults["Fx"].append(result.Fx)
+                plotResults["Fy"].append(result.Fy)
+                plotResults["Fz"].append(result.Fz)
+                plotResults["Mxx"].append(result.Mxx)
+                plotResults["Myy"].append(result.Myy)
+                plotResults["Mzz"].append(result.Mzz)
                 plotResults["Mres"].append(result.Mres)
                 plotResults["Fres"].append(result.Fres)
                 plotResults["combCase"].append(result.combCase)
@@ -262,7 +266,7 @@ class CombinedModels():
 
 def extract1x1(userParams):
     resElements = []
-    plotResults = {"Fx":[],"Mres":[],"Fres":[],"elementIndex":[],"modelName":[],"combCase":[],"midpointHeight":[]}
+    plotResults = {"Fx":[],"Fy":[],"Fz":[],"Mxx":[],"Myy":[],"Mzz":[],"Mres":[],"Fres":[],"elementIndex":[],"modelName":[],"combCase":[],"midpointHeight":[]}
 
     for modelStr in userParams["modelsList"]:
         # GSA.export_to_csv(Path(modelStr))
@@ -283,6 +287,11 @@ def extract1x1(userParams):
             plotResults["elementIndex"].append(element.index)
             plotResults["modelName"].append(element.modelName)
             plotResults["Fx"].append(result.Fx)
+            plotResults["Fy"].append(result.Fy)
+            plotResults["Fz"].append(result.Fz)
+            plotResults["Mxx"].append(result.Mxx)
+            plotResults["Myy"].append(result.Myy)
+            plotResults["Mzz"].append(result.Mzz)
             plotResults["Mres"].append(result.Mres)
             plotResults["Fres"].append(result.Fres)
             plotResults["combCase"].append(result.combCase)

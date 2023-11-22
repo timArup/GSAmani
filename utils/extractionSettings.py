@@ -73,7 +73,7 @@ def defaultExSettings():
     "modelsList" : [
     "Hud Footbridge_rev9"
     ],
-    "cCaseAttempts" : perm_out("C23",1,6), #ULS B AND SLS QP NA
+    "cCaseAttempts" : perm_out("C31",1,13328), #ULS B AND SLS QP NA
     "saveExSettingsName" : ""
     }
 
