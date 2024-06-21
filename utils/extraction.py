@@ -99,7 +99,7 @@ class Model():
             self.resElements = [self.getElement(elementIndex) for elementIndex in elementNos]
 
     def getElement(self,elementIndex):
-        print(elementIndex)
+        # print(elementIndex)
         for element in self.elements:
             if element.index == elementIndex:
                 return element

@@ -67,14 +67,28 @@ def defaultExSettings():
 
     defaultExSettings={
         "addl_pts" : 0,
-        "selLists" : ["columns"],
+        "selLists" : ["piles below pilecap top"],
         "heightFilter" : { #None, greater than, less than, between, val_1, val_2, . Only specify val_1 for > or <, specify both for between. None is no filter. Works off midpoint of elements.
     "type":None},
     "modelsList" : [
-    "Hud Footbridge_rev9"
+    "NAmodel_09","NAmodel_09_0.5weaksprings","NAmodel_09_0.5prings","NAmodel_09_2springs"
     ],
-    "cCaseAttempts" : perm_out("C31",1,13328), #ULS B AND SLS QP NA
+    "cCaseAttempts" : ["C12","C13","C14","C15","C16","C17",
+                            "C33","C34","C35","C36","C37","C38",
+                            "C54","C55","C56","C57","C58","C59",
+                            "C75","C76","C77","C78","C79","C80"], #ULS B NA
     "saveExSettingsName" : ""
     }
+    # defaultExSettings={
+    #     "addl_pts" : 0,
+    #     "selLists" : ["columns"],
+    #     "heightFilter" : { #None, greater than, less than, between, val_1, val_2, . Only specify val_1 for > or <, specify both for between. None is no filter. Works off midpoint of elements.
+    # "type":None},
+    # "modelsList" : [
+    # "Hud Footbridge_rev9"
+    # ],
+    # "cCaseAttempts" : perm_out("C31",1,13328), #ULS B AND SLS QP NA
+    # "saveExSettingsName" : ""
+    # }
 
     return defaultExSettings

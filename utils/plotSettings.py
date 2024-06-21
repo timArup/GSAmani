@@ -42,6 +42,19 @@ def defaultPlSettings():
                                 "SP_SLSQP" : ["C07","C08"],
                                 "SP_SLS" : ["C01","C02","C03","C04","C05","C06"],
                                 "SP_ULSC" : ["C15","C16","C17","C18","C19","C20"],
+                            
         },
+        "Pre-defined Lists": {
+            "AN01": [210],
+            "AN02": [212],
+            "AN03": [274],
+            "AN04": [288],
+            "AN05": [206],
+            "AN06": [208],
+            "AN07": [202],
+            "AN08": [204],
+            "AN09": [198],
+            "AN10": [200],
+        }
     }
     return defaultPlSettings

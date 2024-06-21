@@ -166,11 +166,17 @@ if st.session_state.plotResults:
     with plotArea:
 
         selectedEnvelopes = st.multiselect("Select saved envelope:",st.session_state.plSettings["envelopes"].keys())
+        selectedElementsLists = st.multiselect("Select element list:",st.session_state.plSettings["Pre-defined Lists"].keys())
         
         CsToDisplay = []
         if selectedEnvelopes:
             for key in selectedEnvelopes:
                 CsToDisplay.extend([x for x in st.session_state.plSettings["envelopes"][key]])
+
+        elementsToDisplay = []
+        if selectedElementsLists:
+            for key in selectedElementsLists:
+                elementsToDisplay.extend([x for x in st.session_state.plSettings["Pre-defined Lists"][key]])
 
         plotResultsToDisplay = pd.DataFrame(st.session_state.plotResults).round({"midpointHeight":2})
         bottomPileHeight = plotResultsToDisplay["midpointHeight"].min()
@@ -194,6 +200,9 @@ if st.session_state.plotResults:
 
         if CsToDisplay:
             plotResultsToDisplay = plotResultsToDisplay[plotResultsToDisplay['combCase'].isin(CsToDisplay)]
+
+        if elementsToDisplay:
+            plotResultsToDisplay = plotResultsToDisplay[plotResultsToDisplay['elementIndex'].isin(elementsToDisplay)]
 
         if modelsToDisplay:
             plotResultsToDisplay = plotResultsToDisplay[plotResultsToDisplay['modelName'].isin(modelsToDisplay)]
