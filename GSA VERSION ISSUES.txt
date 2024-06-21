@@ -1,0 +1,5 @@
+NOT SET UP TO DO GSA 10.2 SO WORK AROUND.
+
+Simply change the venv\Lib\site-packages\gsapy\Gsa_10_2.py
+back to GSA_10_1.py, and update the references inside. I've kept the old files in ss for ease.
+Don't need to update autogen, works without any updates despite my attempt at it 

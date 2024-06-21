@@ -259,6 +259,7 @@ class ExtElement(Element):
                                         axis="local",  # output axis - if omitted, it uses the default axis
                                         addl_pts=userParams["addl_pts"])  # additional number of points along the 
                                                                         #element to output forces, if ommited it defaults to 0
+            print(results)
             for result in results:
                 self.results.append(Result(result,self,combCase))
 

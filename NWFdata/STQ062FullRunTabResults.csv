@@ -1,0 +1,81 @@
+,PN,elementIndex,Type,modelName,combCasePerm,combCase,set,Fx,Unnamed: 0
+1200,PN10,107,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C21p1,21,SLS - Variable Actions (Env.),2538.4644470947264,1200
+1,PN10,107,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C21p1,21,SLS - Variable Actions (Env.),-4181.863585083008,1
+842,PN09,108,maxFx,models\South Pier - Pilecap (STQ062)_-Fy+Fz.gwb,C21p2,21,SLS - Variable Actions (Env.),-1638.0717801757814,842
+441,PN09,108,minFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C21p1,21,SLS - Variable Actions (Env.),-7324.948359375,441
+890,PN07,109,maxFx,models\South Pier - Pilecap (STQ062)_-Fy+Fz.gwb,C21p6,21,SLS - Variable Actions (Env.),-2796.8405960937507,890
+485,PN07,109,minFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C21p3,21,SLS - Variable Actions (Env.),-9021.044253686525,485
+1320,PN8,110,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C21p1,21,SLS - Variable Actions (Env.),1790.5504000976562,1320
+121,PN8,110,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C21p1,21,SLS - Variable Actions (Env.),-4527.123108398438,121
+568,PN02,111,maxFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C21p5,21,SLS - Variable Actions (Env.),1914.772189990235,568
+969,PN02,111,minFx,models\South Pier - Pilecap (STQ062)_-Fy+Fz.gwb,C21p5,21,SLS - Variable Actions (Env.),-3978.071506494141,969
+202,PN01,112,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C21p2,21,SLS - Variable Actions (Env.),-1439.39467265625,202
+1401,PN01,112,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C21p1,21,SLS - Variable Actions (Env.),-7032.037588867189,1401
+242,PN03,113,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C21p2,21,SLS - Variable Actions (Env.),-1922.41164375,242
+1441,PN03,113,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C21p1,21,SLS - Variable Actions (Env.),-9544.603539453125,1441
+1488,PN04,114,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C21p5,21,SLS - Variable Actions (Env.),347.2115311645506,1488
+289,PN04,114,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C21p5,21,SLS - Variable Actions (Env.),-4182.258550500488,289
+1528,PN06,115,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C21p5,21,SLS - Variable Actions (Env.),1032.4126649414063,1528
+329,PN06,115,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C21p5,21,SLS - Variable Actions (Env.),-4468.353786230469,329
+362,PN05,116,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C21p2,21,SLS - Variable Actions (Env.),-2901.783637500001,362
+1565,PN05,116,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C21p3,21,SLS - Variable Actions (Env.),-10860.88898144531,1565
+1212,PN10,107,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),668.2342257080078,1212
+13,PN10,107,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-2290.6576197509767,13
+852,PN09,108,maxFx,models\South Pier - Pilecap (STQ062)_-Fy+Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-2573.3381674804687,852
+453,PN09,108,minFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-5877.593043945312,453
+892,PN07,109,maxFx,models\South Pier - Pilecap (STQ062)_-Fy+Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-3600.8792236328127,892
+493,PN07,109,minFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-7538.325821289062,493
+1332,PN8,110,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),386.0933588867188,1332
+133,PN8,110,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-2985.185720703125,133
+572,PN02,111,maxFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),923.9285264892578,572
+973,PN02,111,minFx,models\South Pier - Pilecap (STQ062)_-Fy+Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-2962.534020385742,973
+212,PN01,112,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-3235.533904296875,212
+1413,PN01,112,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-4900.777530273437,1413
+252,PN03,113,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-3666.147970703125,252
+1453,PN03,113,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-7188.2307382812505,1453
+1492,PN04,114,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-281.2942338867188,1492
+293,PN04,114,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-3353.580470214844,293
+1532,PN06,115,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),111.150888671875,1532
+333,PN06,115,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-3377.96480859375,333
+372,PN05,116,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-4167.654087890625,372
+1573,PN05,116,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C22p1,22,SLS - Quasi-permanent (Env.),-8713.081666015625,1573
+1216,PN10,107,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C23p1,23,ULS - Set A/B - Variable Actions (Env.),4085.925729708252,1216
+17,PN10,107,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C23p1,23,ULS - Set A/B - Variable Actions (Env.),-6291.18394170044,17
+858,PN09,108,maxFx,models\South Pier - Pilecap (STQ062)_-Fy+Fz.gwb,C23p2,23,ULS - Set A/B - Variable Actions (Env.),-643.7752475537104,858
+457,PN09,108,minFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C23p1,23,ULS - Set A/B - Variable Actions (Env.),-9930.61918214844,457
+106,PN07,109,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C23p6,23,ULS - Set A/B - Variable Actions (Env.),-1615.3912402294916,106
+1305,PN07,109,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C23p5,23,ULS - Set A/B - Variable Actions (Env.),-12051.045033154296,1305
+1338,PN8,110,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C23p2,23,ULS - Set A/B - Variable Actions (Env.),3061.493362817383,1338
+137,PN8,110,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C23p1,23,ULS - Set A/B - Variable Actions (Env.),-6600.551028466798,137
+584,PN02,111,maxFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C23p5,23,ULS - Set A/B - Variable Actions (Env.),2685.1266844946285,584
+985,PN02,111,minFx,models\South Pier - Pilecap (STQ062)_-Fy+Fz.gwb,C23p5,23,ULS - Set A/B - Variable Actions (Env.),-5647.491989411621,985
+218,PN01,112,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C23p2,23,ULS - Set A/B - Variable Actions (Env.),148.55125511718785,218
+1417,PN01,112,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C23p1,23,ULS - Set A/B - Variable Actions (Env.),-9919.267167060549,1417
+258,PN03,113,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C23p2,23,ULS - Set A/B - Variable Actions (Env.),-79.04590867187362,258
+1457,PN03,113,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C23p1,23,ULS - Set A/B - Variable Actions (Env.),-13259.775398027345,1457
+1506,PN04,114,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C23p6,23,ULS - Set A/B - Variable Actions (Env.),1150.702185411987,1506
+305,PN04,114,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C23p5,23,ULS - Set A/B - Variable Actions (Env.),-5789.599384113159,305
+1546,PN06,115,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C23p6,23,ULS - Set A/B - Variable Actions (Env.),1974.558483754883,1546
+337,PN06,115,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C23p1,23,ULS - Set A/B - Variable Actions (Env.),-6291.583592031251,337
+378,PN05,116,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C23p2,23,ULS - Set A/B - Variable Actions (Env.),-1210.849144726563,378
+1577,PN05,116,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C23p1,23,ULS - Set A/B - Variable Actions (Env.),-14709.734772519529,1577
+1228,PN10,107,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C24p1,24,ULS - Set C - Variable Actions (Env.),3496.595707661133,1228
+29,PN10,107,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C24p1,24,ULS - Set C - Variable Actions (Env.),-5147.253174086914,29
+870,PN09,108,maxFx,models\South Pier - Pilecap (STQ062)_-Fy+Fz.gwb,C24p2,24,ULS - Set C - Variable Actions (Env.),-1007.264497138673,870
+469,PN09,108,minFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C24p1,24,ULS - Set C - Variable Actions (Env.),-8045.555441201172,469
+118,PN07,109,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C24p6,24,ULS - Set C - Variable Actions (Env.),-2273.2342789111326,118
+517,PN07,109,minFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C24p5,24,ULS - Set C - Variable Actions (Env.),-9563.828797211916,517
+1348,PN8,110,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C24p1,24,ULS - Set C - Variable Actions (Env.),2579.4139033007814,1348
+149,PN8,110,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C24p1,24,ULS - Set C - Variable Actions (Env.),-5354.07293359375,149
+596,PN02,111,maxFx,models\South Pier - Pilecap (STQ062)_+Fy-Fz.gwb,C24p5,24,ULS - Set C - Variable Actions (Env.),2459.9049116845704,596
+997,PN02,111,minFx,models\South Pier - Pilecap (STQ062)_-Fy+Fz.gwb,C24p5,24,ULS - Set C - Variable Actions (Env.),-4529.453113627929,997
+230,PN01,112,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C24p2,24,ULS - Set C - Variable Actions (Env.),-562.156357207031,230
+1429,PN01,112,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C24p1,24,ULS - Set C - Variable Actions (Env.),-7970.162897011719,1429
+270,PN03,113,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C24p2,24,ULS - Set C - Variable Actions (Env.),-935.4231234374996,270
+1469,PN03,113,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C24p1,24,ULS - Set C - Variable Actions (Env.),-10640.440249257812,1469
+1516,PN04,114,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C24p5,24,ULS - Set C - Variable Actions (Env.),729.4468435638429,1516
+317,PN04,114,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C24p5,24,ULS - Set C - Variable Actions (Env.),-4608.186323485717,317
+1556,PN06,115,maxFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C24p5,24,ULS - Set C - Variable Actions (Env.),1550.5922626953125,1556
+349,PN06,115,minFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C24p1,24,ULS - Set C - Variable Actions (Env.),-5055.455812773438,349
+390,PN05,116,maxFx,models\South Pier - Pilecap (STQ062)_+Fy+Fz.gwb,C24p2,24,ULS - Set C - Variable Actions (Env.),-2049.9157902929683,390
+1589,PN05,116,minFx,models\South Pier - Pilecap (STQ062)_-Fy-Fz.gwb,C24p1,24,ULS - Set C - Variable Actions (Env.),-11743.878304082034,1589
